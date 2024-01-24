@@ -1,0 +1,62 @@
+//  READERS
+
+[{
+    "_id":{"$oid":"65b15c70c99b83d1da4a0r01"},
+    "firstName": "reader1",
+    "lastName": "reader1",
+    "address": "address1",
+    "phoneNumber": "phoneNumber1",
+    "email": "email@email.com",
+    "birthday": "10/10/1990"
+}, {
+
+}]
+
+
+// EMPLOYEES
+
+[{
+    "_id":{"$oid":"66b15c70c99b83d1da4a0e01"},
+    "firstName": "employee1",
+    "lastName": "employee1",
+    "address": "addressEmployee11",
+    "phoneNumber": "phoneNumberEmployee11",
+    "email": "email@email.com",
+    "birthday": "10/10/1990",
+    "jobTitle": "jobTitle",
+    "department": "department",
+    "salary": "salary"
+}, {
+
+}]
+
+// RESOURCES
+
+[{
+    "_id":{"$oid":"67b15c70c99b83d1da4a0i01"},
+    "ISBN": "ISBN",
+    "format": "format",
+    "author": "author",
+    "title": "title",
+    "publisher": "Publisher",
+    "publicationDate": "Publication Date",
+    "genre": "genre",
+    "language": "language",
+    "mainDescription": "Main Description",
+    "rentalLength": "Rental Length "
+}, {
+
+}]
+
+// SUPPLIERS
+
+[{
+    "_id":{"$oid":"68b15c70c99b83d1da4a0s01"},
+    "companyName": "Company Name",
+    "address": "Address",
+    "phoneNumber": "Phone Number",
+    "email": "email",
+    "pointOfContact": "Point of Contact"
+}, {
+
+}]
