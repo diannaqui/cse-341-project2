@@ -3,6 +3,11 @@ const ObjectId = require('mongodb').ObjectId;
 
 
 const getAll = async (req, res) => {
+  /**
+   * #swagger.tags = ['Suppliers']
+   * #swagger.summary = "Get all suppliers"
+  */
+
   const result = await mongodb.getDb().db().collection('suppliers').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -12,6 +17,11 @@ const getAll = async (req, res) => {
 
 
 const getSingle = async (req, res) => {
+  /**
+   * #swagger.tags = ['Suppliers']
+   * #swagger.summary = "Get a single supplier using supplier id"
+   * #swagger.description = "Enter the Supplier ID."
+  */
     const supplierId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('suppliers').find({ _id: supplierId });
     result.toArray().then((lists) => {
@@ -22,6 +32,11 @@ const getSingle = async (req, res) => {
 
 
 const createSupplier = async (req, res) => {
+  /**
+    * #swagger.tags = ['Suppliers']
+    * #swagger.summary = "Add a supplier"
+    * #swagger.description = "Enter the supplier information in the body template provided, supplierID is created automatically."
+  */
   const supplier = {
     companyName: req.body.companyName,
     address: req.body.address,
@@ -40,6 +55,11 @@ const createSupplier = async (req, res) => {
 
   
 const updateSupplier = async (req, res) => {
+  /**
+   * #swagger.tags = ['Suppliers']
+   * #swagger.summary = "Change supplier information"
+   * #swagger.description = "Enter the supplier ID and any necessary changes in the body template provided."
+  */
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid supplier id to find a supplier.');
     }
@@ -63,6 +83,11 @@ const updateSupplier = async (req, res) => {
   };
   
   const deleteSupplier = async (req, res) => {
+  /**
+   * #swagger.tags = ['Suppliers']
+   * #swagger.summary = "Delete a supplier"
+   * #swagger.description = "Enter the supplier ID <p> **WARNING:** The Supplier will be permanently removed from the database.<p>"
+  */
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid supplier id to find a supplier.');
     }

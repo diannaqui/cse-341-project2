@@ -3,6 +3,11 @@ const ObjectId = require('mongodb').ObjectId;
 
 
 const getAll = async (req, res) => {
+  /**
+   * #swagger.tags = ['Readers']
+   * #swagger.summary = "Get all readers"
+  */
+
   const result = await mongodb.getDb().db().collection('readers').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -12,6 +17,11 @@ const getAll = async (req, res) => {
 
 
 const getSingle = async (req, res) => {
+  /**
+   * #swagger.tags = ['Readers']
+   * #swagger.summary = "Get a single reader using reader id"
+   * #swagger.description = "Enter the Reader ID."
+  */
     const readerId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('readers').find({ _id: readerId });
     result.toArray().then((lists) => {
@@ -22,6 +32,11 @@ const getSingle = async (req, res) => {
 
 
 const createReader = async (req, res) => {
+  /**
+    * #swagger.tags = ['Readers']
+    * #swagger.summary = "Add a reader"
+    * #swagger.description = "Enter the reader information in the body template provided, readerID is created automatically."
+  */
   const reader = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -41,6 +56,12 @@ const createReader = async (req, res) => {
 
  
 const updateReader = async (req, res) => {
+  /**
+   * #swagger.tags = ['Readers']
+   * #swagger.summary = "Change reader information"
+   * #swagger.description = "Enter the Reader ID and any necessary changes in the body template provided."
+  */
+
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid reader id to find a reader.');
     }
@@ -65,6 +86,12 @@ const updateReader = async (req, res) => {
   };
   
   const deleteReader = async (req, res) => {
+  /**
+   * #swagger.tags = ['Readers']
+   * #swagger.summary = "Delete a reader"
+   * #swagger.description = "Enter the Reader ID <p> **WARNING:** The reader will be permanently removed from the database.<p>"
+  */
+
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json('Must use a valid reader id to find a reader.');
     }

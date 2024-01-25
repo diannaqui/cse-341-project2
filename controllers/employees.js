@@ -3,6 +3,11 @@ const ObjectId = require('mongodb').ObjectId;
 
 
 const getAll = async (req, res) => {
+  /**
+   * #swagger.tags = ['Employees']
+   * #swagger.summary = "Get all employees"
+  */
+
   const result = await mongodb.getDb().db().collection('employees').find();
   result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
@@ -12,6 +17,11 @@ const getAll = async (req, res) => {
 
 
 const getSingle = async (req, res) => {
+  /**
+   * #swagger.tags = ['Employees']
+   * #swagger.summary = "Get a single employee using employee id"
+   * #swagger.description = "Enter the Employee ID."
+  */
     const employeeId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('employees').find({ _id: employeeId });
     result.toArray().then((lists) => {
@@ -21,7 +31,12 @@ const getSingle = async (req, res) => {
 };
 
 
-const createEmployee = async (req, res) => {
+const createEmployee = async (req, res) => {  
+  /**
+    * #swagger.tags = ['Employees']
+    * #swagger.summary = "Add an employee"
+    * #swagger.description = "Enter the employee information in the body template provided, employeeID is created automatically."
+  */
   const employee = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -44,6 +59,11 @@ const createEmployee = async (req, res) => {
 
   
 const updateEmployee = async (req, res) => {
+  /**
+   * #swagger.tags = ['Employees']
+   * #swagger.summary = "Change employee information"
+   * #swagger.description = "Enter the Employee ID and any necessary changes in the body template provided."
+  */
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid contact id to find a employee.');
   }
@@ -56,7 +76,7 @@ const updateEmployee = async (req, res) => {
     email: req.body.email,
     birthday: req.body.birthday,
     jobTitle: req.body.jobTitle,
-    department: req.body.department,
+    department: req.body.department, 
     salary: req.body.salary
   };
 
@@ -69,7 +89,14 @@ const updateEmployee = async (req, res) => {
   }
 };
 
+
+
 const deleteEmployee = async (req, res) => {
+  /**
+   * #swagger.tags = ['Employees']
+   * #swagger.summary = "Delete an employee"
+   * #swagger.description = "Enter the Employee ID <p> **WARNING:** The contact will be permanently removed from the database.<p>"
+  */
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }
