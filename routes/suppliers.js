@@ -9,8 +9,8 @@ router.get('/:id', suppliersController.getSingle);
 
 router.post('/', suppliersController.createSupplier);
 
-// router.put('/:id', suppliersController.updateSupplier);
+router.put('/:id', suppliersController.updateSupplier);
 
-// router.delete('/:id', suppliersController.deleteSupplier);
+router.delete('/:id', suppliersController.deleteSupplier);
 
 module.exports = router;

@@ -7,10 +7,12 @@ router.get('/', materialsController.getAll);
 
 router.get('/:id', materialsController.getSingle);
 
+router.get('/format/:format', materialsController.getMaterial);
+
 router.post('/', materialsController.createMaterial);
 
-// router.put('/:id', materialsController.updateMaterial);
+router.put('/:id', materialsController.updateMaterial);
 
-// router.delete('/:id', materialsController.deleteMaterial);
+router.delete('/:id', materialsController.deleteMaterial);
 
 module.exports = router;

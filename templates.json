@@ -38,13 +38,14 @@
     "format": "format",
     "author": "author",
     "title": "title",
-    "publisher": "Publisher",
+    "audience": "Audience",
     "publicationDate": "Publication Date",
-    "genre": "genre",
+    "summary": "summary",
     "language": "language",
-    "mainDescription": "Main Description",
+    "subject": "subject",
     "rentalLength": "Rental Length "
 }, {
+
 
 }]
 

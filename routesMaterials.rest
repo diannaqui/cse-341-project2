@@ -1,0 +1,117 @@
+/////////////// L O C A L    H O S T ///////////////
+////////////////////////////////////////////////////
+
+// -----------------
+// --  MATERIALS  --
+// -----------------
+
+### Get all materials
+GET http://localhost:3000/materials
+
+
+### Get material by id
+GET http://localhost:3000/materials/65b2a0c24f3d9d1a472520fc
+
+
+### Get material by format
+GET http://localhost:3000/materials/format/book
+
+
+### Create material
+POST http://localhost:3000/materials HTTP/1.1
+content-type: application/json
+
+{
+    "ISBN": "9781508287605",
+    "format": "Audiobook",
+    "author": "Kingsbury, Karen",
+    "title": "The Baxters",
+    "audience": "Adult fiction",
+    "publicationDate": "2022",
+    "summary": "A terrible storm builds in the morning sky over Bloomington, Indiana, as Elizabeth Baxter prepares to celebrate her daughter Kari's wedding to Tim Jacobs. It's supposed to be a happy day, but Elizabeth can't shake a growing sense of dread. Something bad is about to happen. Elizabeth knows it.",
+    "language": "English",
+    "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
+    "rentalLength": "1 week"
+}
+
+
+### PUT material
+PUT http://localhost:3000/materials/65b2b1672e6d7d19feb554f1 HTTP/1.1
+content-type: application/json
+
+{
+    "ISBN": "9781508287605",
+    "format": "Audiobook",
+    "author": "Kingsbury, Karen",
+    "title": "The Baxters",
+    "audience": "Adult fiction",
+    "publicationDate": "2022",
+    "summary": "it.",
+    "language": "English",
+    "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
+    "rentalLength": "1 week"
+}
+
+
+### DELETE material
+DELETE http://localhost:3000/materials/65b2b1672e6d7d19feb554f1 HTTP/1.1
+
+
+
+/////////////// P R O D U C T I O N ///////////////
+///////////////////////////////////////////////////
+
+// -----------------
+// --  MATERIALS  --
+// -----------------
+
+### Get all materials
+GET https:// ... /materials
+
+
+### Get material by id
+GET https:// ... /materials/65b1d0f6525bba6756f966f9
+
+
+### Get material by format
+GET http:// ... /materials/format/book
+
+
+### Create material
+POST https:// ... /materials HTTP/1.1
+content-type: application/json
+
+{
+    "ISBN": "9781508287605",
+    "format": "Audiobook",
+    "author": "Kingsbury, Karen",
+    "title": "The Baxters",
+    "audience": "Adult fiction",
+    "publicationDate": "2022",
+    "summary": "A terrible storm builds in the morning sky over Bloomington, Indiana, as Elizabeth Baxter prepares to celebrate her daughter Kari's wedding to Tim Jacobs. It's supposed to be a happy day, but Elizabeth can't shake a growing sense of dread. Something bad is about to happen. Elizabeth knows it.",
+    "language": "English",
+    "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
+    "rentalLength": "1 week"
+}
+
+
+### PUT material
+PUT http:// ... /materials/65b1d0f6525bba6756f966f9 HTTP/1.1
+content-type: application/json
+
+{
+    "ISBN": "9781508287605",
+    "format": "Audiobook",
+    "author": "Kingsbury, Karen",
+    "title": "The Baxters",
+    "audience": "Adult fiction",
+    "publicationDate": "2022",
+    "summary": "A terrible storm builds in the morning sky over Bloomington, Indiana, as Elizabeth Baxter prepares to celebrate her daughter Kari's wedding to Tim Jacobs. It's supposed to be a happy day, but Elizabeth can't shake a growing sense of dread. Something bad is about to happen. Elizabeth knows it.",
+    "language": "English",
+    "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
+    "rentalLength": "1 week"
+}
+
+
+### DELETE material
+DELETE http:// ... /materials/65b1d0f6525bba6756f966f9 HTTP/1.1

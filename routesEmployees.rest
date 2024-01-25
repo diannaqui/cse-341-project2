@@ -1,0 +1,105 @@
+/////////////// L O C A L    H O S T ///////////////
+////////////////////////////////////////////////////
+
+// -----------------
+// --  EMPLOYEES  --
+// -----------------
+
+### Get all employees
+GET http://localhost:3000/employees
+
+
+### Get employe by id
+GET http://localhost:3000/employees/66b15c70c99b83d1da4a0e01
+
+
+### Create employee
+POST http://localhost:3000/employees HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Karla",
+    "lastName": "Ramos",
+    "address": "5423 Jemez Canyon Dam Rd, Bernalillo, NM 87004",
+    "phoneNumber": "505-785-6954",
+    "email": "karlaRamos@gmail.com",
+    "birthday": "10/10/1990",
+    "jobTitle": "Librarian",
+    "department": "Circulation",
+    "salary": "$70,500"
+}
+
+
+### PUT employee
+PUT http://localhost:3000/employees/66b15c70c99b83d1da4a0e01 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Laura",
+    "lastName": "Ramos",
+    "address": "3420 Eubank Blvd NE, Albuquerque, NM 87123",
+    "phoneNumber": "505-582-9632",
+    "email": "lauraRamos_1985@gmail.com",
+    "birthday": "10/10/1985",
+    "jobTitle": "Librarian",
+    "department": "Circulation",
+    "salary": "$70,500"
+}
+
+
+### DELETE employee
+DELETE http://localhost:3000/employees/65b1d0f6525bba6756f966f9 HTTP/1.1
+
+
+
+/////////////// P R O D U C T I O N ///////////////
+///////////////////////////////////////////////////
+
+// -----------------
+// --  EMPLOYEES  --
+// -----------------
+
+### Get all employees
+GET https:// ... /employees
+
+
+### Get employee by id
+GET https:// ... /employees/65b1d0f6525bba6756f966f9
+
+
+### Create employee
+POST https:// ... /employees HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Karla",
+    "lastName": "Ramos",
+    "address": "5423 Jemez Canyon Dam Rd, Bernalillo, NM 87004",
+    "phoneNumber": "505-785-6954",
+    "email": "karlaRamos@gmail.com",
+    "birthday": "10/10/1990",
+    "jobTitle": "Librarian",
+    "department": "Circulation",
+    "salary": "$70,500"
+}
+
+
+### PUT employee
+PUT http:// ... /employees/65b1d0f6525bba6756f966f9 HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Karla",
+    "lastName": "Ramos",
+    "address": "5423 Jemez Canyon Dam Rd, Bernalillo, NM 87004",
+    "phoneNumber": "505-365-9654",
+    "email": "karlaRamos@gmail.com",
+    "birthday": "10/10/1990",
+    "jobTitle": "Librarian",
+    "department": "Circulation",
+    "salary": "$70,500"
+}
+
+
+### DELETE employee
+DELETE http:// ... /employees/65b1d0f6525bba6756f966f9 HTTP/1.1

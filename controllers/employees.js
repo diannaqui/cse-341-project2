@@ -34,18 +34,60 @@ const createEmployee = async (req, res) => {
     salary: req.body.salary
   };
 
-  const response = await mongodb.getDatabase().db().collection('employees').insertOne(employee);
+  const response = await mongodb.getDb().db().collection('employees').insertOne(employee);
   if (response.acknowledged) {
     res.status(201).json(response);
   } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the contact.');
+    res.status(500).json(response.error || 'Some error occurred while creating the employee.');
   }
 };
 
   
+const updateEmployee = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a employee.');
+  }
+  const userId = new ObjectId(req.params.id);
+  const employee = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    address: req.body.address,
+    phoneNumber: req.body.phoneNumber,
+    email: req.body.email,
+    birthday: req.body.birthday,
+    jobTitle: req.body.jobTitle,
+    department: req.body.department,
+    salary: req.body.salary
+  };
+
+  const response = await mongodb.getDb().db().collection('employees').replaceOne({ _id: userId }, employee);
+  console.log(response);
+  if (response.modifiedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while updating the employee.');
+  }
+};
+
+const deleteEmployee = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
+  const employeeId = new ObjectId(req.params.id);
+  const response = await mongodb.getDb().db().collection('employees').remove({ _id: employeeId }, true);
+  console.log(response);
+  if (response.deletedCount > 0) {
+    res.status(204).send();
+  } else {
+    res.status(500).json(response.error || 'Some error occurred while deleting the contact.');
+  }
+};
+
 
 module.exports = {
     getAll,
     getSingle,
-    createEmployee
+    createEmployee,
+    updateEmployee,
+    deleteEmployee
 };
