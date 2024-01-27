@@ -19,24 +19,24 @@ GET http://localhost:3000/materials/format/book
 
 ### Create material
 POST http://localhost:3000/materials HTTP/1.1
-content-type: application/json
+content-type: application/json 
 
 {
-    "ISBN": "9781508287605",
-    "format": "Audiobook",
-    "author": "Kingsbury, Karen",
-    "title": "The Baxters",
-    "audience": "Adult fiction",
-    "publicationDate": "2022",
-    "summary": "A terrible storm builds in the morning sky over Bloomington, Indiana, as Elizabeth Baxter prepares to celebrate her daughter Kari's wedding to Tim Jacobs. It's supposed to be a happy day, but Elizabeth can't shake a growing sense of dread. Something bad is about to happen. Elizabeth knows it.",
+    "ISBN": "9781534462540",
+    "format": "Book123",
+    "author": "Stiefvater, Maggie",
+    "title": "Greywaren",
+    "audience": "Juvenile fiction",
+    "publicationDate": "1980",
+    "summary": "Niall and Mór escaped their homeland for a new start, and lost themselves in what they found. Declan has grown up as the responsible son, the responsible brother only to find there is no way for him to keep his family safe.",
     "language": "English",
-    "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
-    "rentalLength": "1 week"
+    "subject": "Dreams, Leys, Juvenile fiction, Dystopias",
+    "rentalTimeInWeeks": "3"
 }
 
 
 ### PUT material
-PUT http://localhost:3000/materials/65b2b1672e6d7d19feb554f1 HTTP/1.1
+PUT http://localhost:3000/materials/65b478f68a135779f5ddbdd5 HTTP/1.1
 content-type: application/json
 
 {
@@ -46,15 +46,17 @@ content-type: application/json
     "title": "The Baxters",
     "audience": "Adult fiction",
     "publicationDate": "2022",
-    "summary": "it.",
+    "summary": "itititititititititit.",
     "language": "English",
-    "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
-    "rentalLength": "1 week"
+    "subject": "TESTit",
+    "rentalTimeInWeeks": "1"
 }
 
 
 ### DELETE material
-DELETE http://localhost:3000/materials/65b2b1672e6d7d19feb554f1 HTTP/1.1
+DELETE http://localhost:3000/materials/65b48b8f5617c37461a3e507 HTTP/1.1
+
+
 
 
 
@@ -66,19 +68,19 @@ DELETE http://localhost:3000/materials/65b2b1672e6d7d19feb554f1 HTTP/1.1
 // -----------------
 
 ### Get all materials
-GET https:// ... /materials
+GET https://cse341-project2-ykx8.onrender.com/materials
 
 
 ### Get material by id
-GET https:// ... /materials/65b1d0f6525bba6756f966f9
+GET https://cse341-project2-ykx8.onrender.com/materials/65b1d0f6525bba6756f966f9
 
 
 ### Get material by format
-GET http:// ... /materials/format/book
+GET https://cse341-project2-ykx8.onrender.com/materials/format/book
 
 
 ### Create material
-POST https:// ... /materials HTTP/1.1
+POST https://cse341-project2-ykx8.onrender.com/materials HTTP/1.1
 content-type: application/json
 
 {
@@ -91,12 +93,12 @@ content-type: application/json
     "summary": "A terrible storm builds in the morning sky over Bloomington, Indiana, as Elizabeth Baxter prepares to celebrate her daughter Kari's wedding to Tim Jacobs. It's supposed to be a happy day, but Elizabeth can't shake a growing sense of dread. Something bad is about to happen. Elizabeth knows it.",
     "language": "English",
     "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
-    "rentalLength": "1 week"
+    "rentalTimeInWeeks": "1 week"
 }
 
 
 ### PUT material
-PUT http:// ... /materials/65b1d0f6525bba6756f966f9 HTTP/1.1
+PUT https://cse341-project2-ykx8.onrender.com/materials/65b1d0f6525bba6756f966f9 HTTP/1.1
 content-type: application/json
 
 {
@@ -109,9 +111,9 @@ content-type: application/json
     "summary": "A terrible storm builds in the morning sky over Bloomington, Indiana, as Elizabeth Baxter prepares to celebrate her daughter Kari's wedding to Tim Jacobs. It's supposed to be a happy day, but Elizabeth can't shake a growing sense of dread. Something bad is about to happen. Elizabeth knows it.",
     "language": "English",
     "subject": "Weddings, Man-woman relationships, Families, Omens, Bloomington",
-    "rentalLength": "1 week"
+    "rentalTimeInWeeks": "1 week"
 }
 
 
 ### DELETE material
-DELETE http:// ... /materials/65b1d0f6525bba6756f966f9 HTTP/1.1
+DELETE https://cse341-project2-ykx8.onrender.com/materials/65b1d0f6525bba6756f966f9 HTTP/1.1

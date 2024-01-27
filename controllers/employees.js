@@ -1,112 +1,134 @@
 const mongodb = require('../db/connect');
+const createError = require('http-errors');
+
 const ObjectId = require('mongodb').ObjectId;
+const { employeeSchema } = require('../helper/validation_schema');
 
 
-const getAll = async (req, res) => {
+
+const getAll = async (req, res, next) => {
   /**
    * #swagger.tags = ['Employees']
-   * #swagger.summary = "Get all employees"
+   * #swagger.summary = "List all the employees"
   */
-
-  const result = await mongodb.getDb().db().collection('employees').find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
-  });
+  try {
+    const result = await mongodb.getDb().db().collection('employees').find();
+    result.toArray().then((lists) => {
+      if (lists.length == 0) {
+        res.send(next(createError(404, 'There are no registered employees')))
+        return;
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
+    });
+  } catch (err) {
+    next (err);
+  }
 };
 
 
-const getSingle = async (req, res) => {
+const getSingle = async (req, res, next) => {
   /**
    * #swagger.tags = ['Employees']
-   * #swagger.summary = "Get a single employee using employee id"
+   * #swagger.summary = "Get the employee by ID"
    * #swagger.description = "Enter the Employee ID."
   */
+
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      throw createError(400, 'You must use a valid employee ID to find an employee.')
+    }
+
     const employeeId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('employees').find({ _id: employeeId });
+
     result.toArray().then((lists) => {
+        if (lists.length == 0) {
+          res.send(next(createError(404, 'The employee with that ID does not exist.')))
+          return;
+        }
+
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
     });
+  } catch (err) {
+    next(err);
+  }
 };
 
 
-const createEmployee = async (req, res) => {  
+const createEmployee = async (req, res, next) => {  
   /**
     * #swagger.tags = ['Employees']
-    * #swagger.summary = "Add an employee"
+    * #swagger.summary = "Create a new employee"
     * #swagger.description = "Enter the employee information in the body template provided, employeeID is created automatically."
   */
-  const employee = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    address: req.body.address,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email,
-    birthday: req.body.birthday,
-    jobTitle: req.body.jobTitle,
-    department: req.body.department,
-    salary: req.body.salary
-  };
+  try {
+    const employee = await employeeSchema.validateAsync(req.body);
+    const response = await await mongodb.getDb().db().collection('employees').insertOne(employee);
 
-  const response = await mongodb.getDb().db().collection('employees').insertOne(employee);
-  if (response.acknowledged) {
-    res.status(201).json(response);
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while creating the employee.');
+    if (response.acknowledged) {
+      res.status(201).json(response);
+    } else {
+      throw createError(500, 'Some error occurred while creating the employee.')
+    }
+  } catch (err) {
+    if (err.isJoi === true) err.status = 422
+    next(err);
   }
 };
 
   
-const updateEmployee = async (req, res) => {
+const updateEmployee = async (req, res, next) => {
   /**
    * #swagger.tags = ['Employees']
-   * #swagger.summary = "Change employee information"
+   * #swagger.summary = "Update employee information by ID"
    * #swagger.description = "Enter the Employee ID and any necessary changes in the body template provided."
   */
-  if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid contact id to find a employee.');
-  }
-  const userId = new ObjectId(req.params.id);
-  const employee = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    address: req.body.address,
-    phoneNumber: req.body.phoneNumber,
-    email: req.body.email,
-    birthday: req.body.birthday,
-    jobTitle: req.body.jobTitle,
-    department: req.body.department, 
-    salary: req.body.salary
-  };
 
-  const response = await mongodb.getDb().db().collection('employees').replaceOne({ _id: userId }, employee);
-  console.log(response);
-  if (response.modifiedCount > 0) {
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while updating the employee.');
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      throw createError(400, 'You must use a valid employee ID to find an employee.')
+    }
+
+    const employeeId = new ObjectId(req.params.id);
+    const employee = await employeeSchema.validateAsync(req.body);
+    const response = await mongodb.getDb().db().collection('employees').replaceOne({ _id: employeeId }, employee);
+
+    if (response.modifiedCount > 0) {
+      res.status(200).json(response);
+    } else {
+      throw createError(500, 'Some error occurred while updating the employee.')
+    }
+  } catch (err) {
+    if (err.isJoi === true) err.status = 422
+    next(err);
   }
+  
 };
 
 
 
-const deleteEmployee = async (req, res) => {
+const deleteEmployee = async (req, res, next) => {
   /**
    * #swagger.tags = ['Employees']
-   * #swagger.summary = "Delete an employee"
-   * #swagger.description = "Enter the Employee ID <p> **WARNING:** The contact will be permanently removed from the database.<p>"
+   * #swagger.summary = "Remove an employee by ID"
+   * #swagger.description = "Enter the Employee ID <p> **WARNING:** The employee will be permanently removed from the database.<p>"
   */
-  if (!ObjectId.isValid(req.params.id)) {
-    res.status(400).json('Must use a valid contact id to find a contact.');
-  }
-  const employeeId = new ObjectId(req.params.id);
-  const response = await mongodb.getDb().db().collection('employees').remove({ _id: employeeId }, true);
-  console.log(response);
-  if (response.deletedCount > 0) {
-    res.status(204).send();
-  } else {
-    res.status(500).json(response.error || 'Some error occurred while deleting the contact.');
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      throw createError(400, 'You must use a valid employee ID to find an employee.')
+    }
+    const employeeId = new ObjectId(req.params.id);
+    const response = await mongodb.getDb().db().collection('employees').deleteOne({ _id: employeeId }, true);
+
+    if (response.deletedCount > 0) {
+      res.status(200).json(response);
+    } else {
+      throw createError(500, 'Some error occurred while deleting the employee.')
+    }
+  } catch (err) {
+    next(err);
   }
 };
 
