@@ -5,10 +5,10 @@
     "description": "This project will perform CRUD operations on a MongoDB database, be published on Render, incorporate security measures.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-project2-ykx8.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/": {
@@ -34,168 +34,6 @@
         }
       }
     },
-    "/employees/": {
-      "get": {
-        "tags": [
-          "Employees"
-        ],
-        "summary": "List all the employees",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Employees"
-        ],
-        "summary": "Create a new employee",
-        "description": "Enter the employee information in the body template provided, employeeID is created automatically.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "jobTitle": {
-                  "example": "any"
-                },
-                "department": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          }
-        }
-      }
-    },
-    "/employees/{id}": {
-      "get": {
-        "tags": [
-          "Employees"
-        ],
-        "summary": "Get the employee by ID",
-        "description": "Enter the Employee ID.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Employees"
-        ],
-        "summary": "Update employee information by ID",
-        "description": "Enter the Employee ID and any necessary changes in the body template provided.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                },
-                "jobTitle": {
-                  "example": "any"
-                },
-                "department": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Employees"
-        ],
-        "summary": "Remove an employee by ID",
-        "description": "Enter the Employee ID <p> **WARNING:** The employee will be permanently removed from the database.<p>",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/materials/": {
       "get": {
         "tags": [
@@ -209,6 +47,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
@@ -287,6 +128,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
@@ -346,6 +190,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -366,6 +213,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -391,6 +241,183 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/employees/": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "List all the employees",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Create a new employee",
+        "description": "Enter the employee information in the body template provided, employeeID is created automatically.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "jobTitle": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/employees/{id}": {
+      "get": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Get the employee by ID",
+        "description": "Enter the Employee ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Update employee information by ID",
+        "description": "Enter the Employee ID and any necessary changes in the body template provided.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "jobTitle": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Employees"
+        ],
+        "summary": "Remove an employee by ID",
+        "description": "Enter the Employee ID <p> **WARNING:** The employee will be permanently removed from the database.<p>",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
