@@ -6,11 +6,11 @@
 // -----------------
 
 ### Get all employees
-GET http://localhost:3000/employees
+GET http://localhost:3000/employees   
 
 
 ### Get employe by id
-GET http://localhost:3000/employees/66b15c70c99b83d1da4a0e01
+GET http://localhost:3000/employees/66b15c70c99b83d1da4a0e02
 
 
 ### Create employee
@@ -18,7 +18,7 @@ POST http://localhost:3000/employees HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "Kqw",
+    "firstName": "K1232123",
     "lastName": "Ramos",
     "address": "5423 Jemez Canyon Dam Rd, Bernalillo, NM 87004",
     "phoneNumber": "5057856954",
@@ -30,7 +30,7 @@ content-type: application/json
 
 
 ### PUT employee
-PUT http://localhost:3000/employees/66b15c70c99b83d1da4a0e02 HTTP/1.1
+PUT http://localhost:3000/employees/66b15c70c99b83d1da4a0e11 HTTP/1.1
 content-type: application/json
 
 {
@@ -41,12 +41,12 @@ content-type: application/json
     "email": "lauraRamos_1985@gmail.com",
     "birthday": "10/10/1985",
     "jobTitle": "Librarian",
-    "department": "Circulation"
+    "department": "Circulation Desk"
 }
 
 
 ### DELETE employee
-DELETE http://localhost:3000/employees/65b1d0f6525bba6756f966f9 HTTP/1.1
+DELETE http://localhost:3000/employees/65b58e0da7fbc034fcdd4884 HTTP/1.1
 
 
 

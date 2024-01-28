@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
      */
     res.send('Library API'); });
 
-router.use('/employees', require('./employees'));
 router.use('/materials', require('./materials'));
+router.use('/employees', require('./employees'));
 
 module.exports = router;

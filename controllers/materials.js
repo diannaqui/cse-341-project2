@@ -14,12 +14,13 @@ const getAll = async (req, res, next) => {
     const result = await mongodb.getDb().db().collection('materials').find();
     result.toArray().then((lists) => {
       if (lists.length == 0) {
-        res.send(next(createError(404, 'There are no registered materials')))
+        res.status(404).send(createError('There are no registered materials'));
         return;
       }
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists);
     });
+
   } catch (err) {
     next (err);
   }
@@ -35,7 +36,7 @@ const getSingle = async (req, res, next) => {
 
   try {
     if (!ObjectId.isValid(req.params.id)) {
-      throw createError(400, 'You must use a valid material ID to find the material.')
+      throw createError(400, 'You must use a valid material ID to find an material.')
     }
 
     const materialId = new ObjectId(req.params.id);
@@ -43,13 +44,15 @@ const getSingle = async (req, res, next) => {
 
     result.toArray().then((lists) => {
         if (lists.length == 0) {
-          res.send(next(createError(404, 'The material with that ID does not exist.')))
+          res.status(404).send(createError('The material with that ID does not exist.'));
           return;
         }
 
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists[0]);
+        
     });
+
   } catch (err) {
     next(err);
   }
@@ -65,14 +68,16 @@ const getMaterial = async (req, res, next) => {
   try {
     const materialId = req.params.format;
     const result = await mongodb.getDb().db().collection('materials').find({format: new RegExp('^' + materialId + '$', 'i')} );
+
     result.toArray().then((lists) => {
       if (lists.length == 0) {
-        res.send(next(createError(404, 'That material format does not exist.')))
+        res.status(404).send(createError('That material format does not exist.'))
         return;
       }
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
     });
+
   } catch (err) {
     next(err);
   }
@@ -87,7 +92,21 @@ const createMaterial = async (req, res, next) => {
   */
 
   try {
-    const material = await materialSchema.validateAsync(req.body);
+
+    const materialBody = {
+      ISBN: req.body.ISBN,
+      format: req.body.format,
+      author: req.body.author,
+      title: req.body.title,
+      audience: req.body.audience,
+      publicationDate: req.body.publicationDate,
+      summary: req.body.summary,
+      language: req.body.language,
+      subject: req.body.subject,
+      rentalTimeInWeeks: req.body.rentalTimeInWeeks
+    };
+
+    const material = await materialSchema.validateAsync(materialBody);
     const response = await await mongodb.getDb().db().collection('materials').insertOne(material);
 
     if (response.acknowledged) {
@@ -111,18 +130,32 @@ const updateMaterial = async (req, res, next) => {
   */
 
   try {
+
+    const materialBody = {
+      ISBN: req.body.ISBN,
+      format: req.body.format,
+      author: req.body.author,
+      title: req.body.title,
+      audience: req.body.audience,
+      publicationDate: req.body.publicationDate,
+      summary: req.body.summary,
+      language: req.body.language,
+      subject: req.body.subject,
+      rentalTimeInWeeks: req.body.rentalTimeInWeeks
+    };
+
     if (!ObjectId.isValid(req.params.id)) {
       throw createError(400, 'You must use a valid material ID to find a material.')
     }
 
     const materialId = new ObjectId(req.params.id);
-    const material = await materialSchema.validateAsync(req.body);
+    const material = await materialSchema.validateAsync(materialBody);
     const response = await mongodb.getDb().db().collection('materials').replaceOne({ _id: materialId }, material);
 
     if (response.modifiedCount > 0) {
       res.status(200).json(response);
     } else {
-      throw createError(500, 'Some error occurred while updating the material.')
+      res.status(500).json(response.error || 'Some error occurred while updating the material.');
     }
   } catch (err) {
     if (err.isJoi === true) err.status = 422
@@ -149,7 +182,7 @@ const updateMaterial = async (req, res, next) => {
       res.status(200).json(response);
 
     } else {
-      throw createError(500, 'Some error occurred while deleting the material.')
+      res.status(500).json(response.error || 'Some error occurred while deleting the material.');
     }
   } catch (err) {
     next(err);

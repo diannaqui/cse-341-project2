@@ -1,16 +1,3 @@
-//  READERS
-// JSON
-
-{
-    "_id":{"$oid":"65b15c70c99b83d1da4a0r01"},
-    "firstName": "reader1",
-    "lastName": "reader1",
-    "address": "address1",
-    "phoneNumber": "phoneNumber1",
-    "email": "email@email.com",
-    "birthday": "10/10/1990"
-}
-
 
 // -------------------------------------------------------------------------
 // EMPLOYEES
@@ -26,12 +13,11 @@
     "birthday": "10/10/1990",
     "jobTitle": "jobTitle",
     "department": "department",
-    "salary": "salary"
 }
 
 // Schema
 
-  const employee = {
+  const employeeBody = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     address: req.body.address,
@@ -62,6 +48,32 @@
 }
 
 
+// Schema
+
+  const materialBody = {
+    ISBN: req.body.ISBN,
+    format: req.body.format,
+    author: req.body.author,
+    title: req.body.title,
+    audience: req.body.audience,
+    publicationDate: req.body.publicationDate,
+    summary: req.body.summary,
+    language: req.body.language
+    subject: req.body.subject
+    rentalTimeInWeeks: req.body.rentalTimeInWeeks
+  };
+
+
+
+
+
+
+
+
+
+
+
+
 // -------------------------------------------------------------------------
 // SUPPLIERS
 // JSON
@@ -73,4 +85,20 @@
     "phoneNumber": "Phone Number",
     "email": "email",
     "pointOfContact": "Point of Contact"
+}
+
+
+
+// -------------------------------------------------------------------------
+//  READERS
+// JSON
+
+{
+    "_id":{"$oid":"65b15c70c99b83d1da4a0r01"},
+    "firstName": "reader1",
+    "lastName": "reader1",
+    "address": "address1",
+    "phoneNumber": "phoneNumber1",
+    "email": "email@email.com",
+    "birthday": "10/10/1990"
 }

@@ -22,7 +22,8 @@ app.use((req, res, next) => {
   // const err = new Error('Not Found');
   // err.status = 404;
   // next(err);
-  next(createError(404, 'Not found'))
+  next(createError(404, 'Not found'));
+  
 });
 
 // Error Handler
@@ -32,8 +33,8 @@ app.use((err, req, res, next) => {
     error: {
       status: err.status || 500,
       message: err.message
-    }
-  })
+    } 
+  });
 });
 
 

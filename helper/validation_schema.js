@@ -1,3 +1,4 @@
+
 const Joi = require('joi').extend(require('@joi/date'));
 
 const employeeSchema = Joi.object({
@@ -25,8 +26,8 @@ const materialSchema = Joi.object({
 });
 
 
-
 module.exports = {
-    employeeSchema,
-    materialSchema
+    materialSchema,
+    employeeSchema
+    
 }

@@ -5,8 +5,13 @@ const doc = {
     title: 'Library API',
     description: 'This project will perform CRUD operations on a MongoDB database, be published on Render, incorporate security measures.'
   },
-  host: 'localhost:3000',
-  schemes: ['http']
+  // host: 'localhost:3000',
+  // schemes: ['http']
+
+  host: 'cse341-project2-ykx8.onrender.com',
+  schemes: ['https']
+
+
 };
 
 const outputFile = './swagger.json';

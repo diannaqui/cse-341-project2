@@ -6,7 +6,7 @@
 // -----------------
 
 ### Get all materials
-GET http://localhost:3000/materials
+GET http://localhost:3000/materials 
 
 
 ### Get material by id
@@ -22,26 +22,26 @@ POST http://localhost:3000/materials HTTP/1.1
 content-type: application/json 
 
 {
-    "ISBN": "9781534462540",
-    "format": "Book123",
-    "author": "Stiefvater, Maggie",
-    "title": "Greywaren",
-    "audience": "Juvenile fiction",
-    "publicationDate": "1980",
-    "summary": "Niall and Mór escaped their homeland for a new start, and lost themselves in what they found. Declan has grown up as the responsible son, the responsible brother only to find there is no way for him to keep his family safe.",
+    "ISBN": "9781705024867",
+    "format": "Audiobook",
+    "author": "Steel, Danielle",
+    "title": "The high notes",
+    "audience": "Adult",
+    "publicationDate": "2022",
+    "summary": "Iris Cooper has been singing ever since she can remember, hitting the high notes like no one else. When she is twelve, her father convinces the owner of a bar in Lake City, Texas, to let her perform, and she stuns the audience.",
     "language": "English",
-    "subject": "Dreams, Leys, Juvenile fiction, Dystopias",
-    "rentalTimeInWeeks": "3"
+    "subject": "Country musicians, Fathers and daughters",
+    "rentalTimeInWeeks": "1"
 }
 
 
 ### PUT material
-PUT http://localhost:3000/materials/65b478f68a135779f5ddbdd5 HTTP/1.1
+PUT http://localhost:3000/materials/65b5be0f6751d47f7eafdf8b HTTP/1.1
 content-type: application/json
 
 {
     "ISBN": "9781508287605",
-    "format": "Audiobook",
+    "format": "test",
     "author": "Kingsbury, Karen",
     "title": "The Baxters",
     "audience": "Adult fiction",
@@ -54,8 +54,7 @@ content-type: application/json
 
 
 ### DELETE material
-DELETE http://localhost:3000/materials/65b48b8f5617c37461a3e507 HTTP/1.1
-
+DELETE http://localhost:3000/materials/65b5be0f6751d47f7eafdf8b HTTP/1.1
 
 
 

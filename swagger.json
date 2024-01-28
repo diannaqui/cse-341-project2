@@ -37,8 +37,7 @@
     "/employees/": {
       "get": {
         "tags": [
-          "Employees",
-          "Books"
+          "Employees"
         ],
         "summary": "List all the employees",
         "description": "",
@@ -57,6 +56,41 @@
         ],
         "summary": "Create a new employee",
         "description": "Enter the employee information in the body template provided, employeeID is created automatically.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "jobTitle": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -100,11 +134,44 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "phoneNumber": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "jobTitle": {
+                  "example": "any"
+                },
+                "department": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
+          "200": {
+            "description": "OK"
           }
         }
       },
@@ -123,173 +190,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          }
-        }
-      }
-    },
-    "/readers/": {
-      "get": {
-        "tags": [
-          "Readers"
-        ],
-        "summary": "Get all readers",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Readers"
-        ],
-        "summary": "Add a reader",
-        "description": "Enter the reader information in the body template provided, readerID is created automatically.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/readers/{id}": {
-      "get": {
-        "tags": [
-          "Readers"
-        ],
-        "summary": "Get a single reader using reader id",
-        "description": "Enter the Reader ID.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Readers"
-        ],
-        "summary": "Change reader information",
-        "description": "Enter the Reader ID and any necessary changes in the body template provided.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "firstName": {
-                  "example": "any"
-                },
-                "lastName": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Readers"
-        ],
-        "summary": "Delete a reader",
-        "description": "Enter the Reader ID <p> **WARNING:** The reader will be permanently removed from the database.<p>",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -299,7 +201,7 @@
         "tags": [
           "Materials"
         ],
-        "summary": "Get all materials",
+        "summary": "List all the materials",
         "description": "",
         "produces": [
           "application/json"
@@ -314,7 +216,7 @@
         "tags": [
           "Materials"
         ],
-        "summary": "Add a material",
+        "summary": "Create a new material",
         "description": "Enter the material information in the body template provided, materialID is created automatically.",
         "parameters": [
           {
@@ -350,7 +252,7 @@
                 "subject": {
                   "example": "any"
                 },
-                "rentalLength": {
+                "rentalTimeInWeeks": {
                   "example": "any"
                 }
               }
@@ -360,9 +262,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -372,7 +271,7 @@
         "tags": [
           "Materials"
         ],
-        "summary": "Get a single material using material id",
+        "summary": "Get the material by ID",
         "description": "Enter the material ID.",
         "produces": [
           "application/json"
@@ -395,7 +294,7 @@
         "tags": [
           "Materials"
         ],
-        "summary": "Change material information",
+        "summary": "Update material information by ID",
         "description": "Enter the Material ID and any necessary changes in the body template provided.",
         "parameters": [
           {
@@ -437,7 +336,7 @@
                 "subject": {
                   "example": "any"
                 },
-                "rentalLength": {
+                "rentalTimeInWeeks": {
                   "example": "any"
                 }
               }
@@ -445,14 +344,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "200": {
+            "description": "OK"
           }
         }
       },
@@ -460,7 +353,7 @@
         "tags": [
           "Materials"
         ],
-        "summary": "Delete an employee",
+        "summary": "Remove a material by ID",
         "description": "Enter the Material ID <p> **WARNING:** The material will be permanently removed from the database.<p>",
         "parameters": [
           {
@@ -471,14 +364,8 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -504,165 +391,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/suppliers/": {
-      "get": {
-        "tags": [
-          "Suppliers"
-        ],
-        "summary": "Get all suppliers",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Suppliers"
-        ],
-        "summary": "Add a supplier",
-        "description": "Enter the supplier information in the body template provided, supplierID is created automatically.",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "companyName": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "pointOfContact": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/suppliers/{id}": {
-      "get": {
-        "tags": [
-          "Suppliers"
-        ],
-        "summary": "Get a single supplier using supplier id",
-        "description": "Enter the Supplier ID.",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Suppliers"
-        ],
-        "summary": "Change supplier information",
-        "description": "Enter the supplier ID and any necessary changes in the body template provided.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "companyName": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "pointOfContact": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Suppliers"
-        ],
-        "summary": "Delete a supplier",
-        "description": "Enter the supplier ID <p> **WARNING:** The Supplier will be permanently removed from the database.<p>",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
