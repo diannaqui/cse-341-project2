@@ -153,7 +153,7 @@ const updateMaterial = async (req, res, next) => {
     const response = await mongodb.getDb().db().collection('materials').replaceOne({ _id: materialId }, material);
 
     if (response.modifiedCount > 0) {
-      res.status(200).json(response);
+      res.status(204).json(response);
     } else {
       res.status(500).json(response.error || 'Some error occurred while updating the material.');
     }
@@ -179,7 +179,7 @@ const updateMaterial = async (req, res, next) => {
     const response = await mongodb.getDb().db().collection('materials').deleteOne({ _id: materialId }, true);
 
     if (response.deletedCount > 0) {
-      res.status(200).json(response);
+      res.status(204).json(response);
 
     } else {
       res.status(500).json(response.error || 'Some error occurred while deleting the material.');

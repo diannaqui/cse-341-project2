@@ -121,7 +121,7 @@ const updateEmployee = async (req, res, next) => {
     const response = await mongodb.getDb().db().collection('employees').replaceOne({ _id: employeeId }, employee);
 
     if (response.modifiedCount > 0) {
-      res.status(200).json(response);
+      res.status(204).json(response);
     } else {
       res.status(500).json(response.error || 'Some error occurred while updating the employee.');
     }
@@ -148,7 +148,7 @@ const deleteEmployee = async (req, res, next) => {
     const response = await mongodb.getDb().db().collection('employees').deleteOne({ _id: employeeId }, true);
 
     if (response.deletedCount > 0) {
-      res.status(200).json(response);
+      res.status(204).json(response);
     } else {
       res.status(500).json(response.error || 'Some error occurred while deleting the employee.');
     }
