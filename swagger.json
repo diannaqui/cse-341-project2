@@ -5,9 +5,10 @@
     "description": "This project will perform CRUD operations on a MongoDB database, be published on Render, incorporate security measures.",
     "version": "1.0.0"
   },
-  "host": "cse341-project2-ykx8.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -318,6 +319,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -400,6 +404,9 @@
           "204": {
             "description": "No Content"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -422,6 +429,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
           },
           "500": {
             "description": "Internal Server Error"
@@ -640,7 +650,7 @@
       },
       "post": {
         "tags": [
-          "authors"
+          "Authors"
         ],
         "summary": "Create a new author",
         "description": "Enter the author information in the body template provided, authorID is created automatically.",

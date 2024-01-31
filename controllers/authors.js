@@ -87,7 +87,7 @@ const getSinglePersonalId = async (req, res, next) => {
 
 const createAuthor = async (req, res, next) => {  
   /**
-    * #swagger.tags = ['authors']
+    * #swagger.tags = ['Authors']
     * #swagger.summary = "Create a new author"
     * #swagger.description = "Enter the author information in the body template provided, authorID is created automatically."
   */
