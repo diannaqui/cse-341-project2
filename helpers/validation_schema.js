@@ -12,6 +12,8 @@ const employeeSchema = Joi.object({
     department: Joi.string().required()
 });
 
+
+
 const materialSchema = Joi.object({
     ISBN: Joi.string().length(13).pattern(/^[0-9]+$/).required(),
     format: Joi.string().min(2).required(),
@@ -24,6 +26,8 @@ const materialSchema = Joi.object({
     subject: Joi.string().min(5).required(),
     rentalTimeInWeeks: Joi.string().length(1).pattern(/^[1-4]+$/).required()
 });
+
+
 
 const readerSchema = Joi.object({
     ISBN: Joi.string().length(13).pattern(/^[0-9]+$/).required(),

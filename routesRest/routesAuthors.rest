@@ -9,15 +9,15 @@
 GET http://localhost:3000/authors 
 
 
-### Get reader by id
+### Get author by id
 GET http://localhost:3000/authors/65bacf44b2956f012e90de7e
 
 
-### Get reader by NAME
+### Get author by personal ID
 GET http://localhost:3000/authors/personal/002
 
 
-### Create reader
+### Create author
 POST http://localhost:3000/authors HTTP/1.1
 content-type: application/json 
 
@@ -31,7 +31,7 @@ content-type: application/json
 
 
 
-### PUT reader
+### PUT change author
 PUT http://localhost:3000/authors/65bacfbfb2956f012e90de7f HTTP/1.1
 content-type: application/json
 
@@ -44,7 +44,7 @@ content-type: application/json
 }
 
 
-### DELETE reader
+### DELETE author
 DELETE http://localhost:3000/authors/65bad2076ad9a2668694da2e HTTP/1.1
 
 
@@ -62,15 +62,15 @@ DELETE http://localhost:3000/authors/65bad2076ad9a2668694da2e HTTP/1.1
 GET https://cse341-project2-ykx8.onrender.com/authors 
 
 
-### Get reader by id
+### Get author by id
 GET https://cse341-project2-ykx8.onrender.com/authors/65bacf44b2956f012e90de7e
 
 
-### Get reader by NAME
+### Get author by personal
 GET https://cse341-project2-ykx8.onrender.com/authors/personal/002
 
 
-### Create reader
+### Create author
 POST https://cse341-project2-ykx8.onrender.com/authors HTTP/1.1
 content-type: application/json 
 
@@ -84,7 +84,7 @@ content-type: application/json
 
 
 
-### PUT reader
+### PUT change author
 PUT https://cse341-project2-ykx8.onrender.com/authors/65bacfbfb2956f012e90de7f HTTP/1.1
 content-type: application/json
 
@@ -97,6 +97,6 @@ content-type: application/json
 }
 
 
-### DELETE reader
+### DELETE author
 DELETE https://cse341-project2-ykx8.onrender.com/authors/65bad2076ad9a2668694da2e HTTP/1.1
 

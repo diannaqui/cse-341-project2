@@ -29,6 +29,8 @@
   };
   
 
+
+
 // -------------------------------------------------------------------------
 // MATERIALS
 // JSON
@@ -47,7 +49,6 @@
     "rentalTimeInWeeks": "Rental Length "
 }
 
-
 // Schema
 
   const materialBody = {
@@ -62,14 +63,6 @@
     subject: req.body.subject
     rentalTimeInWeeks: req.body.rentalTimeInWeeks
   };
-
-
-
-
-
-
-
-
 
 
 
@@ -99,6 +92,7 @@
 
 
 
+
 // -------------------------------------------------------------------------
 //  READERS
 // JSON
@@ -113,8 +107,6 @@
     "birthday": "10/10/1990"
 }
 
-
-
 // Schema
 
   const readerBody = {
@@ -125,13 +117,3 @@
     email: req.body.email,
     birthday: req.body.birthday,
   };
-
-
-  001  -  Jung, Jessica
-  002  -  Kingsbury, Karen
-  003  -  Stiefvater, Maggie
-  004  -  , FaithHicks
-  005  -  McCaffrey, Anne
-  006  -  Steel, Danielle
-  007  -  Hale, Shannon
-  008  -  Szymanski, Jennifer
