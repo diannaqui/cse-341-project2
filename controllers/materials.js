@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const createError = require('http-errors');
 
 const ObjectId = require('mongodb').ObjectId;
-const { materialSchema } = require('../helper/validation_schema');
+const { materialSchema } = require('../helpers/validation_schema');
 
 
 const getAll = async (req, res, next) => {
@@ -96,7 +96,7 @@ const createMaterial = async (req, res, next) => {
     const materialBody = {
       ISBN: req.body.ISBN,
       format: req.body.format,
-      author: req.body.author,
+      authorId: req.body.authorId,
       title: req.body.title,
       audience: req.body.audience,
       publicationDate: req.body.publicationDate,
@@ -134,7 +134,7 @@ const updateMaterial = async (req, res, next) => {
     const materialBody = {
       ISBN: req.body.ISBN,
       format: req.body.format,
-      author: req.body.author,
+      authorId: req.body.authorId,
       title: req.body.title,
       audience: req.body.audience,
       publicationDate: req.body.publicationDate,

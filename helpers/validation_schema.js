@@ -15,6 +15,19 @@ const employeeSchema = Joi.object({
 const materialSchema = Joi.object({
     ISBN: Joi.string().length(13).pattern(/^[0-9]+$/).required(),
     format: Joi.string().min(2).required(),
+    authorId: Joi.string().length(3).pattern(/^[0-9]+$/).required(),
+    title: Joi.string().min(3).required(),
+    audience: Joi.string().min(4).required(),
+    publicationDate: Joi.date().format('YYYY').raw(),
+    summary: Joi.string().min(10).required(),
+    language: Joi.string().min(4).required(),
+    subject: Joi.string().min(5).required(),
+    rentalTimeInWeeks: Joi.string().length(1).pattern(/^[1-4]+$/).required()
+});
+
+const readerSchema = Joi.object({
+    ISBN: Joi.string().length(13).pattern(/^[0-9]+$/).required(),
+    format: Joi.string().min(2).required(),
     author: Joi.string().min(2).required(),
     title: Joi.string().min(3).required(),
     audience: Joi.string().min(4).required(),
@@ -26,8 +39,22 @@ const materialSchema = Joi.object({
 });
 
 
+
+const authorSchema = Joi.object({
+    authorId: Joi.string().length(3).pattern(/^[0-9]+$/).required(),
+    authorFirstName: Joi.string().min(2).required(),
+    authorLasttName: Joi.string().min(2).required(),
+    email: Joi.string().email().lowercase().required(),
+    authorBio: Joi.string().required()
+});
+
+
+
+
+
 module.exports = {
     materialSchema,
-    employeeSchema
-    
+    employeeSchema,
+    readerSchema,
+    authorSchema
 }

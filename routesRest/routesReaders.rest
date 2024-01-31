@@ -2,29 +2,29 @@
 ////////////////////////////////////////////////////
 
 // -----------------
-// --  MATERIALS  --
+// --  READERS  --
 // -----------------
 
-### Get all materials
-GET http://localhost:3000/materials 
+### Get all readers
+GET http://localhost:3000/readers 
 
 
-### Get material by id
-GET http://localhost:3000/materials/65bab937dcedefaed0364f7f
+### Get reader by id
+GET http://localhost:3000/readers/65b2a0c24f3d9d1a472520fc
 
 
-### Get material by format
-GET http://localhost:3000/materials/format/book
+### Get reader by NAME
+GET http://localhost:3000/readers/name/one&twos
 
 
-### Create material
-POST http://localhost:3000/materials HTTP/1.1
+### Create reader
+POST http://localhost:3000/readers HTTP/1.1
 content-type: application/json 
 
 {
     "ISBN": "9781705024867",
     "format": "Audiobook",
-    "authorId": "009",
+    "author": "Steel, Danielle",
     "title": "The high notes",
     "audience": "Adult",
     "publicationDate": "2022",
@@ -35,14 +35,14 @@ content-type: application/json
 }
 
 
-### PUT material
-PUT http://localhost:3000/materials/65bab937dcedefaed0364f7f HTTP/1.1
+### PUT reader
+PUT http://localhost:3000/readers/65b5be0f6751d47f7eafdf8b HTTP/1.1
 content-type: application/json
 
 {
     "ISBN": "9781508287605",
     "format": "test",
-    "authorId": "010",
+    "author": "Kingsbury, Karen",
     "title": "The Baxters",
     "audience": "Adult fiction",
     "publicationDate": "2022",
@@ -53,8 +53,8 @@ content-type: application/json
 }
 
 
-### DELETE material
-DELETE http://localhost:3000/materials/65bab937dcedefaed0364f7f HTTP/1.1
+### DELETE reader
+DELETE http://localhost:3000/readers/65b5be0f6751d47f7eafdf8b HTTP/1.1
 
 
 
@@ -63,23 +63,23 @@ DELETE http://localhost:3000/materials/65bab937dcedefaed0364f7f HTTP/1.1
 ///////////////////////////////////////////////////
 
 // -----------------
-// --  MATERIALS  --
+// --  READERS  --
 // -----------------
 
-### Get all materials
-GET https://cse341-project2-ykx8.onrender.com/materials
+### Get all readers
+GET https://cse341-project2-ykx8.onrender.com/readers
 
 
-### Get material by id
-GET https://cse341-project2-ykx8.onrender.com/materials/65b1d0f6525bba6756f966f9
+### Get reader by id
+GET https://cse341-project2-ykx8.onrender.com/readers/65b1d0f6525bba6756f966f9
 
 
-### Get material by format
-GET https://cse341-project2-ykx8.onrender.com/materials/format/book
+### Get reader by format
+GET https://cse341-project2-ykx8.onrender.com/readers/format/book
 
 
-### Create material
-POST https://cse341-project2-ykx8.onrender.com/materials HTTP/1.1
+### Create reader
+POST https://cse341-project2-ykx8.onrender.com/readers HTTP/1.1
 content-type: application/json
 
 {
@@ -96,8 +96,8 @@ content-type: application/json
 }
 
 
-### PUT material
-PUT https://cse341-project2-ykx8.onrender.com/materials/65b1d0f6525bba6756f966f9 HTTP/1.1
+### PUT reader
+PUT https://cse341-project2-ykx8.onrender.com/readers/65b1d0f6525bba6756f966f9 HTTP/1.1
 content-type: application/json
 
 {
@@ -114,5 +114,5 @@ content-type: application/json
 }
 
 
-### DELETE material
-DELETE https://cse341-project2-ykx8.onrender.com/materials/65b1d0f6525bba6756f966f9 HTTP/1.1
+### DELETE reader
+DELETE https://cse341-project2-ykx8.onrender.com/readers/65b1d0f6525bba6756f966f9 HTTP/1.1

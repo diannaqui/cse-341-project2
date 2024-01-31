@@ -80,12 +80,22 @@
 
 {
     "_id":{"$oid":"68b15c70c99b83d1da4a0s01"},
-    "companyName": "Company Name",
-    "address": "Address",
-    "phoneNumber": "Phone Number",
+    "authorId": "authorId",
+    "authorFirstName": "First Name",
+    "authorLasttName": "Last Name",
     "email": "email",
-    "pointOfContact": "Point of Contact"
+    "authorBio": "Autor's Biography"
 }
+
+// Schema
+
+    const authorBody = {
+      authorId: req.body.authorId,
+      authorFirstName: req.body.authorFirstName,
+      authorLasttName: req.body.authorLasttName,
+      email: req.body.email,
+      authorBio: req.body.authorInfo,
+    };
 
 
 
@@ -102,3 +112,26 @@
     "email": "email@email.com",
     "birthday": "10/10/1990"
 }
+
+
+
+// Schema
+
+  const readerBody = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    address: req.body.address,
+    phoneNumber: req.body.phoneNumber,
+    email: req.body.email,
+    birthday: req.body.birthday,
+  };
+
+
+  001  -  Jung, Jessica
+  002  -  Kingsbury, Karen
+  003  -  Stiefvater, Maggie
+  004  -  Hicks, Faith
+  005  -  McCaffrey, Anne
+  006  -  Steel, Danielle
+  007  -  Hale, Shannon
+  008  -  Szymanski, Jennifer

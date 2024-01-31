@@ -6,11 +6,14 @@
 // -----------------
 
 ### Get all employees
-GET http://localhost:3000/employees   
+GET http://localhost:3000/employees
+
+### Login
+GET http://localhost:3000/login
 
 
 ### Get employe by id
-GET http://localhost:3000/employees/66b15c70c99b83d1da4a0e02
+GET http://localhost:3000/employees/66b15c70c99b83d1da4a0e01
 
 
 ### Create employee
@@ -18,7 +21,7 @@ POST http://localhost:3000/employees HTTP/1.1
 content-type: application/json
 
 {
-    "firstName": "K1232123",
+    "firstName": "K",
     "lastName": "Ramos",
     "address": "5423 Jemez Canyon Dam Rd, Bernalillo, NM 87004",
     "phoneNumber": "5057856954",

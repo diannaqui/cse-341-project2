@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const createError = require('http-errors');
 
 const ObjectId = require('mongodb').ObjectId;
-const { employeeSchema } = require('../helper/validation_schema');
+const { employeeSchema } = require('../helpers/validation_schema');
 
 const getAll = async (req, res, next) => {
   /**
