@@ -1,0 +1,102 @@
+/////////////// L O C A L    H O S T ///////////////
+////////////////////////////////////////////////////
+
+// -----------------
+// --  AUTHORS  --
+// -----------------
+
+### Get all authors
+GET http://localhost:3000/authors 
+
+
+### Get reader by id
+GET http://localhost:3000/authors/65bacf44b2956f012e90de7e
+
+
+### Get reader by NAME
+GET http://localhost:3000/authors/personal/002
+
+
+### Create reader
+POST http://localhost:3000/authors HTTP/1.1
+content-type: application/json 
+
+{
+    "authorId": "008",
+    "authorFirstName": "Jennifer",
+    "authorLasttName": "Szymanski",
+    "email": "Szymanski@gmail.com",
+    "authorBio": "JENNIFER SZYMANSKI is a freelance science writer and editor. She specializes in writing materials that support both teachers and students in meeting national and state science standards, but considers her real job to be helping students connect science to everyday life."
+}
+
+
+
+### PUT reader
+PUT http://localhost:3000/authors/65bacfbfb2956f012e90de7f HTTP/1.1
+content-type: application/json
+
+{
+    "authorId": "002",
+    "authorFirstName": "Karen",
+    "authorLasttName": "Kingsbury",
+    "email": "kingsbury@gmail.com",
+    "authorBio": "She has written or co-written almost 100 novels or short stories, and (as of 2008) has nearly 13 million copies of her novels in print. She is a #1 New York Times and USA Today best selling novelist with the last dozen books published topping bestseller lists. Some of her novels are being developed into movies by The Hallmark Channel, including The Bridge, A Time to Dance (2015), and Maggie's Christmas Miracle (2017). Her Baxter Family series is being adapted into a television series. Lightworkers Media and Roma Downey have the rights to develop the series"
+}
+
+
+### DELETE reader
+DELETE http://localhost:3000/authors/65bad2076ad9a2668694da2e HTTP/1.1
+
+
+
+
+/////////////// P R O D U C T I O N ///////////////
+///////////////////////////////////////////////////
+
+// -----------------
+// --  AUTHORS  --
+// -----------------
+
+
+### Get all authors
+GET https://cse341-project2-ykx8.onrender.com/authors 
+
+
+### Get reader by id
+GET https://cse341-project2-ykx8.onrender.com/authors/65bacf44b2956f012e90de7e
+
+
+### Get reader by NAME
+GET https://cse341-project2-ykx8.onrender.com/authors/personal/002
+
+
+### Create reader
+POST https://cse341-project2-ykx8.onrender.com/authors HTTP/1.1
+content-type: application/json 
+
+{
+    "authorId": "008",
+    "authorFirstName": "Jennifer",
+    "authorLasttName": "Szymanski",
+    "email": "Szymanski@gmail.com",
+    "authorBio": "JENNIFER SZYMANSKI is a freelance science writer and editor. She specializes in writing materials that support both teachers and students in meeting national and state science standards, but considers her real job to be helping students connect science to everyday life."
+}
+
+
+
+### PUT reader
+PUT https://cse341-project2-ykx8.onrender.com/authors/65bacfbfb2956f012e90de7f HTTP/1.1
+content-type: application/json
+
+{
+    "authorId": "002",
+    "authorFirstName": "Karen",
+    "authorLasttName": "Kingsbury",
+    "email": "kingsbury@gmail.com",
+    "authorBio": "She has written or co-written almost 100 novels or short stories, and (as of 2008) has nearly 13 million copies of her novels in print. She is a #1 New York Times and USA Today best selling novelist with the last dozen books published topping bestseller lists. Some of her novels are being developed into movies by The Hallmark Channel, including The Bridge, A Time to Dance (2015), and Maggie's Christmas Miracle (2017). Her Baxter Family series is being adapted into a television series. Lightworkers Media and Roma Downey have the rights to develop the series"
+}
+
+
+### DELETE reader
+DELETE https://cse341-project2-ykx8.onrender.com/authors/65bad2076ad9a2668694da2e HTTP/1.1
+

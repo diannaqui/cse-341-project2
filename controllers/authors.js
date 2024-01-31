@@ -100,7 +100,7 @@ const createAuthor = async (req, res, next) => {
       authorFirstName: req.body.authorFirstName,
       authorLasttName: req.body.authorLasttName,
       email: req.body.email,
-      authorBio: req.body.authorInfo,
+      authorBio: req.body.authorBio
     };
 
     const author = await authorSchema.validateAsync(authorBody);
@@ -130,7 +130,7 @@ const updateAuthor = async (req, res, next) => {
     authorFirstName: req.body.authorFirstName,
     authorLasttName: req.body.authorLasttName,
     email: req.body.email,
-    authorBio: req.body.authorInfo,
+    authorBio: req.body.authorBio,
   };
 
   try {

@@ -75,7 +75,7 @@
 
 
 // -------------------------------------------------------------------------
-// SUPPLIERS
+// AUTHORS
 // JSON
 
 {
@@ -130,7 +130,7 @@
   001  -  Jung, Jessica
   002  -  Kingsbury, Karen
   003  -  Stiefvater, Maggie
-  004  -  Hicks, Faith
+  004  -  , FaithHicks
   005  -  McCaffrey, Anne
   006  -  Steel, Danielle
   007  -  Hale, Shannon
