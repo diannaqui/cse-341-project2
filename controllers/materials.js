@@ -59,6 +59,47 @@ const getSingle = async (req, res, next) => {
 };
 
 
+const getAuthor = async (req, res, next) => {
+  /**
+   * #swagger.tags = ['Materials']
+   * #swagger.summary = "Get the Author information using the material ID"
+   * #swagger.description = "Enter the material ID."
+  */
+
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      throw createError(400, 'You must use a valid material ID to find an material.')
+    }
+
+    const materialId = new ObjectId(req.params.id);
+    const result = await mongodb.getDb().db().collection('materials').find({ _id: materialId });
+    const author = await mongodb.getDb().db().collection('authors');
+
+    result.toArray().then((lists) => {
+        if (lists.length == 0) {
+          res.status(404).send(createError('The material with that ID does not exist.'));
+          return;
+        }
+
+        const resultAuthor = author.find({authorId: lists[0].authorId});
+        
+        resultAuthor.toArray().then((listsAuthor) => {
+          if (listsAuthor.length == 0) {
+            res.status(404).send(createError('An error occurred while trying to load author information'));
+            return;
+          }
+          res.setHeader('Content-Type', 'application/json');
+          res.status(200).json(listsAuthor[0]);
+        });
+    });
+
+  } catch (err) {
+    next(err);
+  }
+};
+
+
+
 const getMaterial = async (req, res, next) => {
   /**
    * #swagger.tags = ['Materials']
@@ -194,6 +235,7 @@ const updateMaterial = async (req, res, next) => {
 module.exports = {
     getAll,
     getSingle,
+    getAuthor,
     getMaterial,
     createMaterial,
     updateMaterial,

@@ -206,6 +206,34 @@
         }
       }
     },
+    "/materials/author/{id}": {
+      "get": {
+        "tags": [
+          "Materials"
+        ],
+        "summary": "Get the Author information using the material ID",
+        "description": "Enter the material ID.",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
     "/materials/format/{format}": {
       "get": {
         "tags": [

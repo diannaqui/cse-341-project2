@@ -10,11 +10,15 @@ GET http://localhost:3000/materials
 
 
 ### Get material by id
-GET http://localhost:3000/materials/65bab937dcedefaed0364f7f
+GET http://localhost:3000/materials/65b2a8b0bcbcb9a9d5e5858b
 
 
 ### Get material by format
 GET http://localhost:3000/materials/format/book
+
+
+### Get author by material ID
+GET http://localhost:3000/materials/author/65b2d656b063639fe610bd6c
 
 
 ### Create material

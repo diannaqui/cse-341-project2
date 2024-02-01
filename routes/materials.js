@@ -10,6 +10,8 @@ router.get('/', materialsController.getAll);
 
 router.get('/:id', materialsController.getSingle);
 
+router.get('/author/:id', materialsController.getAuthor);
+
 router.get('/format/:format', materialsController.getMaterial);
 
 router.post('/', isAuthenticated, materialsController.createMaterial);
